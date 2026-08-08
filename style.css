@@ -594,6 +594,17 @@ input[type="range"]::-moz-range-thumb {
     line-height: 1.8;
 }
 
+.item-detail a.item-link {
+    color: #b8860b;
+    text-decoration: underline;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.item-detail a.item-link:hover {
+    color: #d4a84b;
+}
+
 .empty-slot {
     color: #333;
     font-size: 12px;

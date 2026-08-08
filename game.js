@@ -34,7 +34,7 @@ const Items = {
     mirror_shard: { id: 'mirror_shard', name: '镜子碎片', icon: '🪞', desc: '尖锐的镜子碎片，映出的你似乎有些不太一样……' },
     drug: { id: 'drug', name: '白色药片', icon: '💊', desc: '不知名的白色药片，边缘刻着奇怪的符号。' },
     burnt_note: { id: 'burnt_note', name: '烧焦的纸条', icon: '🔥', desc: '从画室灰烬里捡出来的半张纸条，还剩半截没烧透。用蓝色圆珠笔写的字："网易博客 · 晓晓的画语 · 网址：localhost:8080/echo_linxiao_blog.html · 密码和初见那天一样"。' },
-    blog_slip: { id: 'blog_slip', name: '日记本里的便签', icon: '📑', desc: '夹在日记里的小纸条，是林晓的字："如果我消失了，去看我的博客。第七次之前，还有机会。网址：localhost:8080/echo_linxiao_blog.html"' }
+    blog_slip: { id: 'blog_slip', name: '日记本里的便签', icon: '📑', desc: '夹在日记里的小纸条，是林晓的字："如果我消失了，去看我的博客。第七次之前，还有机会。网址：<a href="echo_linxiao_blog.html" target="_blank" rel="noopener" class="item-link">localhost:8080/echo_linxiao_blog.html</a>"' }
 };
 
 // ===== 线索定义 =====
