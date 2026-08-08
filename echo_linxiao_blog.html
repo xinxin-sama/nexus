@@ -1,0 +1,1240 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>晓晓的画语 · 林晓个人博客 - 网易博客</title>
+    <style>
+        /* ============ 2010年代网易/新浪博客经典风格 ============ */
+        * { margin: 0; padding: 0; }
+        body {
+            font-family: "Microsoft YaHei", "微软雅黑", "SimSun", serif;
+            font-size: 12px;
+            color: #333;
+            background: #e7f1ff url('https://img.alicdn.com/imgextra/i3/6000000006782/O1CN01k9V5Vh1Y3L9h3pFy6_!!6000000003011-0-tps-32-32.jpg') repeat;
+            line-height: 1.8;
+        }
+        /* 顶部横幅 */
+        #header {
+            height: 220px;
+            background: linear-gradient(135deg, #4a8fe7 0%, #9cc5f7 45%, #d4e6ff 100%);
+            position: relative;
+            overflow: hidden;
+            border-bottom: 3px solid #2e6bb5;
+        }
+        #header::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(circle at 20% 30%, rgba(255,255,255,0.3) 0%, transparent 40%),
+                        radial-gradient(circle at 80% 70%, rgba(255,255,255,0.2) 0%, transparent 35%);
+        }
+        #header-content {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 45px 30px;
+            position: relative;
+        }
+        #blog-name {
+            font-size: 38px;
+            color: #fff;
+            font-weight: normal;
+            letter-spacing: 4px;
+            text-shadow: 2px 2px 6px rgba(30,80,160,0.5);
+            margin-bottom: 10px;
+            font-family: "楷体", "KaiTi", serif;
+        }
+        #blog-desc {
+            color: #e8f2ff;
+            font-size: 14px;
+            text-shadow: 1px 1px 3px rgba(30,80,160,0.4);
+            font-style: italic;
+        }
+        #header-nav {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            background: rgba(20,60,120,0.75);
+            height: 38px;
+            line-height: 38px;
+        }
+        #header-nav-inner {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        #header-nav a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 13px;
+            padding: 0 22px;
+            display: inline-block;
+            border-right: 1px solid rgba(255,255,255,0.15);
+        }
+        #header-nav a:hover { background: rgba(255,255,255,0.15); }
+        /* 主体三栏 */
+        #container {
+            max-width: 960px;
+            margin: 15px auto;
+            display: flex;
+            gap: 12px;
+        }
+        .sidebar {
+            width: 200px;
+        }
+        #main {
+            flex: 1;
+            min-width: 0;
+        }
+        .panel {
+            background: #fff;
+            border: 1px solid #b8cfea;
+            margin-bottom: 12px;
+        }
+        .panel-title {
+            background: linear-gradient(to bottom, #5895da, #3d7bc2);
+            color: #fff;
+            padding: 6px 12px;
+            font-size: 13px;
+            font-weight: bold;
+            border-bottom: 1px solid #b8cfea;
+            position: relative;
+        }
+        .panel-title::before {
+            content: '◆';
+            margin-right: 6px;
+            color: #fff6a8;
+            font-size: 10px;
+        }
+        .panel-body { padding: 10px 12px; }
+
+        /* 左侧博主信息 */
+        #avatar-box {
+            text-align: center;
+            padding: 15px 10px 8px;
+        }
+        #avatar {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            border: 4px solid #cfe2f7;
+            background: linear-gradient(135deg, #ffd9e8, #bcd9ff);
+            margin: 0 auto 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 42px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        #nickname {
+            font-size: 14px;
+            font-weight: bold;
+            color: #2e6bb5;
+        }
+        #mood {
+            font-size: 11px;
+            color: #888;
+            margin-top: 4px;
+            padding: 0 8px;
+            font-style: italic;
+        }
+        #blog-stats {
+            list-style: none;
+            padding: 8px 0;
+            border-top: 1px dashed #cfd8e6;
+            margin-top: 8px;
+            font-size: 11px;
+            color: #666;
+        }
+        #blog-stats li {
+            padding: 2px 0;
+        }
+        #blog-stats span {
+            color: #d94d3a;
+            font-weight: bold;
+        }
+        .counter {
+            text-align: center;
+            padding: 10px 0;
+            color: #555;
+            font-size: 11px;
+        }
+        .counter-digits {
+            font-family: "Courier New", monospace;
+            font-size: 15px;
+            color: #fff;
+            background: #0a2c55;
+            padding: 2px 8px;
+            border: 1px solid #0a1e3a;
+            border-radius: 2px;
+            letter-spacing: 2px;
+            margin: 5px 0;
+            display: inline-block;
+        }
+
+        /* 音乐播放器 */
+        .music-player {
+            background: #f3f8ff;
+            border: 1px solid #cfe2f7;
+            padding: 8px;
+            border-radius: 3px;
+            margin-top: 5px;
+        }
+        .music-info {
+            font-size: 11px;
+            color: #555;
+            margin-bottom: 5px;
+        }
+        .music-bar {
+            height: 6px;
+            background: #e0eaf6;
+            border: 1px solid #c4d6ec;
+            border-radius: 3px;
+            position: relative;
+            overflow: hidden;
+        }
+        .music-bar-fill {
+            height: 100%;
+            width: 38%;
+            background: linear-gradient(to right, #4a8fe7, #8cb9f5);
+        }
+        .music-controls {
+            margin-top: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 11px;
+            color: #666;
+        }
+        .music-btn {
+            background: #fff;
+            border: 1px solid #b8cfea;
+            padding: 1px 8px;
+            border-radius: 2px;
+            cursor: default;
+            font-size: 11px;
+        }
+
+        /* 日历组件 */
+        .calendar {
+            width: 100%;
+            font-size: 11px;
+            border-collapse: collapse;
+            text-align: center;
+            margin-top: 5px;
+        }
+        .calendar th {
+            background: #eaf2fc;
+            color: #4a8fe7;
+            padding: 2px;
+            font-weight: normal;
+            border: 1px solid #d5e2f3;
+        }
+        .calendar td {
+            border: 1px solid #dfe9f5;
+            padding: 2px;
+            color: #555;
+        }
+        .calendar .today {
+            background: #ffe7a8;
+            color: #c0392b;
+            font-weight: bold;
+        }
+        .calendar .has-post {
+            background: #fff7d6;
+            color: #2e6bb5;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+
+        /* 友情链接 */
+        .link-list {
+            list-style: none;
+            padding: 0;
+        }
+        .link-list li {
+            padding: 3px 0;
+            border-bottom: 1px dotted #dfe9f5;
+        }
+        .link-list li::before {
+            content: '➤ ';
+            color: #4a8fe7;
+            font-size: 10px;
+        }
+        .link-list a {
+            color: #2e6bb5;
+            text-decoration: none;
+            font-size: 11px;
+        }
+        .link-list a:hover { text-decoration: underline; color: #d94d3a; }
+
+        /* 主栏博文 */
+        .post {
+            background: #fff;
+            border: 1px solid #b8cfea;
+            margin-bottom: 14px;
+        }
+        .post-header {
+            background: linear-gradient(to bottom, #f3f8ff, #e5effd);
+            border-bottom: 1px solid #b8cfea;
+            padding: 8px 15px;
+        }
+        .post-title {
+            font-size: 16px;
+            color: #2e6bb5;
+            font-weight: bold;
+            text-decoration: none;
+            display: block;
+        }
+        .post-title:hover { color: #d94d3a; }
+        .post-meta {
+            font-size: 11px;
+            color: #888;
+            margin-top: 4px;
+        }
+        .post-meta span { margin-right: 14px; }
+        .post-meta a { color: #2e6bb5; text-decoration: none; }
+        .post-body {
+            padding: 15px 18px;
+            font-size: 13px;
+            line-height: 1.9;
+            color: #3a3a3a;
+        }
+        .post-body p { margin-bottom: 10px; text-indent: 2em; }
+        .post-body .quote {
+            border-left: 3px solid #bcd9ff;
+            padding: 6px 12px;
+            background: #f6faff;
+            color: #555;
+            margin: 10px 0;
+            font-style: italic;
+            text-indent: 0;
+        }
+        .post-body .doodle {
+            font-size: 20px;
+            text-align: center;
+            letter-spacing: 6px;
+            color: #6a9bd8;
+            margin: 8px 0;
+        }
+        .post-body .sad { color: #c0392b; }
+        .post-body .happy { color: #27ae60; }
+        .post-body .warning { color: #e67e22; }
+        .post-footer {
+            background: #f8fbff;
+            border-top: 1px dashed #c4d6ec;
+            padding: 6px 15px;
+            font-size: 11px;
+            color: #777;
+            display: flex;
+            justify-content: space-between;
+        }
+        .post-footer a {
+            color: #2e6bb5;
+            text-decoration: none;
+            margin-left: 10px;
+        }
+        .post-footer a:hover { color: #d94d3a; text-decoration: underline; }
+
+        /* 分页 */
+        .pagination {
+            text-align: center;
+            padding: 12px 0;
+        }
+        .pagination a, .pagination b {
+            display: inline-block;
+            padding: 3px 10px;
+            border: 1px solid #b8cfea;
+            background: #fff;
+            margin: 0 2px;
+            font-size: 12px;
+            text-decoration: none;
+            color: #2e6bb5;
+        }
+        .pagination b {
+            background: #4a8fe7;
+            color: #fff;
+            border-color: #3d7bc2;
+        }
+
+        /* 右栏搜索框 */
+        .search-box {
+            display: flex;
+            gap: 3px;
+        }
+        .search-box input {
+            flex: 1;
+            border: 1px solid #b8cfea;
+            padding: 3px 6px;
+            font-size: 11px;
+            outline: none;
+            color: #666;
+        }
+        .search-box button {
+            background: linear-gradient(to bottom, #5895da, #3d7bc2);
+            color: #fff;
+            border: 1px solid #3d7bc2;
+            padding: 3px 8px;
+            font-size: 11px;
+            cursor: pointer;
+        }
+        /* 最新评论 */
+        .comment-list {
+            list-style: none;
+            padding: 0;
+            font-size: 11px;
+        }
+        .comment-list li {
+            padding: 6px 0;
+            border-bottom: 1px dotted #dfe9f5;
+            line-height: 1.6;
+        }
+        .comment-list li:last-child { border-bottom: none; }
+        .comment-name { color: #2e6bb5; font-weight: bold; }
+        .comment-text { color: #666; }
+        .comment-date { color: #aaa; display: block; font-size: 10px; margin-top: 2px; }
+
+        /* 文章分类 */
+        .category-list {
+            list-style: none;
+            padding: 0;
+            font-size: 12px;
+        }
+        .category-list li {
+            padding: 4px 0;
+            border-bottom: 1px dotted #dfe9f5;
+        }
+        .category-list a {
+            color: #333;
+            text-decoration: none;
+        }
+        .category-list a:hover { color: #d94d3a; }
+        .category-list span {
+            float: right;
+            color: #999;
+            font-size: 10px;
+        }
+
+        /* 留言板 */
+        .guestbook {
+            border: 1px solid #cfd8e6;
+            padding: 8px;
+            background: #f9fbff;
+        }
+        .guestbook textarea {
+            width: 100%;
+            height: 60px;
+            border: 1px solid #b8cfea;
+            font-size: 11px;
+            font-family: inherit;
+            color: #666;
+            padding: 5px;
+            box-sizing: border-box;
+            outline: none;
+            resize: none;
+        }
+        .guestbook button {
+            margin-top: 5px;
+            background: linear-gradient(to bottom, #5895da, #3d7bc2);
+            color: #fff;
+            border: 1px solid #3d7bc2;
+            padding: 3px 14px;
+            font-size: 11px;
+            cursor: pointer;
+        }
+
+        /* 页脚 */
+        #footer {
+            background: #3d7bc2;
+            color: #dce8f9;
+            text-align: center;
+            padding: 15px 10px;
+            font-size: 11px;
+            margin-top: 20px;
+            line-height: 1.8;
+        }
+        #footer a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 6px;
+        }
+
+        /* 小装饰 */
+        .sparkle {
+            text-align: center;
+            font-size: 14px;
+            padding: 4px 0;
+            letter-spacing: 4px;
+            color: #b8d4f5;
+        }
+        .emoji-flower { color: #e881a6; }
+        .emoji-rain { color: #5a8cc9; }
+        .emoji-paint { color: #8e7cc3; }
+        .emoji-heart { color: #e06070; }
+        .emoji-dizzy { color: #b8902e; }
+
+        /* 返回按钮 */
+        .back-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(62,123,194,0.92);
+            color: #fff;
+            padding: 8px 18px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            border: 1px solid #2e6bb5;
+        }
+        .back-btn:hover { background: #2e6bb5; }
+
+        /* 最后一条博文警告提示 */
+        .post-body .doodle.red { color: #c0392b; letter-spacing: 3px; }
+
+        /* 功能不可用提示弹窗（早期博客风） */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.35);
+            z-index: 9999;
+        }
+        .modal-overlay.show { display: block; }
+        .modal-box {
+            position: fixed;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 320px;
+            background: #fff;
+            border: 1px solid #2e6bb5;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            z-index: 10000;
+            font-family: "Microsoft YaHei", "微软雅黑", serif;
+        }
+        .modal-title {
+            background: linear-gradient(to bottom, #5895da, #3d7bc2);
+            color: #fff;
+            padding: 6px 12px;
+            font-size: 13px;
+            font-weight: bold;
+            border-bottom: 1px solid #2e6bb5;
+        }
+        .modal-title::before { content: ''; }
+        .modal-box.err .modal-title {
+            background: linear-gradient(to bottom, #8a8a8a, #5a5a5a);
+            border-bottom-color: #444;
+        }
+        .modal-box.err .modal-btns button {
+            background: linear-gradient(to bottom, #8a8a8a, #5a5a5a);
+            border-color: #5a5a5a;
+        }
+        .modal-box.err .modal-btns button:hover { background: #4a4a4a; }
+
+        /* 博客访问密码门 */
+        #loginGate {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(135deg, #4a6a9a 0%, #7a9aca 100%);
+            z-index: 99999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .login-box {
+            width: 340px;
+            background: #fff;
+            border: 1px solid #2e6bb5;
+            box-shadow: 0 6px 24px rgba(0,0,0,0.35);
+        }
+        .login-title {
+            background: linear-gradient(to bottom, #5895da, #3d7bc2);
+            color: #fff;
+            padding: 9px 14px;
+            font-size: 14px;
+            font-weight: bold;
+            border-bottom: 1px solid #2e6bb5;
+            text-shadow: 0 1px 1px rgba(0,0,0,0.3);
+        }
+        .login-body { padding: 22px 22px 16px; text-align: center; }
+        .login-tip { font-size: 13px; color: #444; margin-bottom: 4px; }
+        .login-hint { font-size: 11px; color: #888; margin-bottom: 16px; font-style: italic; }
+        #blogPwd {
+            width: 78%;
+            padding: 7px 10px;
+            border: 1px solid #b8cfea;
+            font-size: 14px;
+            outline: none;
+            margin-bottom: 12px;
+            text-align: center;
+            letter-spacing: 2px;
+            color: #333;
+        }
+        #blogPwd:focus { border-color: #3d7bc2; }
+        #blogLoginBtn {
+            background: linear-gradient(to bottom, #5895da, #3d7bc2);
+            color: #fff;
+            border: 1px solid #3d7bc2;
+            padding: 7px 30px;
+            font-size: 13px;
+            cursor: pointer;
+            border-radius: 2px;
+            width: 78%;
+            text-shadow: 0 1px 1px rgba(0,0,0,0.2);
+        }
+        #blogLoginBtn:hover { background: linear-gradient(to bottom, #4a85d0, #2e6bb5); }
+        .pwd-display {
+            width: 78%; margin: 0 auto 12px; padding: 10px 10px;
+            border: 1px solid #b8cfea; background: #f8fbfe;
+            font-size: 20px; text-align: center; letter-spacing: 8px;
+            color: #3d7bc2; min-height: 22px; border-radius: 2px;
+        }
+        .pwd-display.empty { color: #b0b8c0; font-size: 12px; letter-spacing: 0; }
+        .num-pad {
+            width: 78%; margin: 0 auto 14px;
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 5px;
+        }
+        .num-key {
+            padding: 10px 0; font-size: 17px; font-weight: bold;
+            border: 1px solid #b8cfea; border-radius: 2px;
+            background: linear-gradient(to bottom, #fff, #eef4fb);
+            color: #3d7bc2; cursor: pointer;
+        }
+        .num-key:hover { background: linear-gradient(to bottom, #eef4fb, #dbe8f7); }
+        .num-key:active { background: #3d7bc2; color: #fff; }
+        .num-key-fn { font-size: 13px; font-weight: normal; color: #888; }
+        .login-err { color: #c0392b; font-size: 11px; margin-top: 10px; min-height: 14px; }
+        .login-foot {
+            background: #f0f4fa;
+            border-top: 1px solid #d5e2f3;
+            padding: 6px;
+            font-size: 10px;
+            color: #999;
+            text-align: center;
+        }
+        .modal-content {
+            padding: 20px 18px 14px;
+            text-align: center;
+            font-size: 13px;
+            color: #333;
+            line-height: 1.8;
+        }
+        .modal-content .main-msg {
+            font-size: 14px;
+            color: #c0392b;
+            font-weight: bold;
+            margin-bottom: 6px;
+        }
+        .modal-content .sub-msg {
+            font-size: 11px;
+            color: #888;
+        }
+        .modal-btns {
+            text-align: center;
+            padding: 0 0 16px;
+        }
+        .modal-btns button {
+            background: linear-gradient(to bottom, #5895da, #3d7bc2);
+            color: #fff;
+            border: 1px solid #3d7bc2;
+            padding: 4px 24px;
+            font-size: 12px;
+            cursor: pointer;
+            border-radius: 2px;
+        }
+        .modal-btns button:hover { background: #2e6bb5; }
+    </style>
+</head>
+<body>
+
+<!-- 博客访问密码门 -->
+<div id="loginGate">
+    <div class="login-box">
+        <div class="login-title">🔒 晓晓的画语 · 私密博客登录</div>
+        <form class="login-body" id="blogLoginForm" autocomplete="off">
+            <p class="login-tip">请输入访问密码：</p>
+            <input type="password" id="blogPwd" name="blogPwd" autofocus
+                   inputmode="numeric" maxlength="8" autocomplete="off"
+                   placeholder="密码" />
+            <br/>
+            <button type="submit" id="blogLoginBtn">进 入 博 客</button>
+            <div class="login-err" id="blogLoginErr"></div>
+        </form>
+        <div class="login-foot">© 2022 晓晓的画语 · 网易博客本地存档</div>
+    </div>
+</div>
+
+<div id="header">
+    <div id="header-content">
+        <div id="blog-name">晓晓的画语 🎨</div>
+        <div id="blog-desc">
+            "画笔落处，皆是我心。——记录画画的日子，记录和他的时光。"
+        </div>
+    </div>
+    <div id="header-nav">
+        <div id="header-nav-inner">
+            <a href="#">首页</a>
+            <a href="#">日志</a>
+            <a href="#">相册</a>
+            <a href="#">关于我</a>
+            <a href="#">好友链接</a>
+            <a href="#">留言</a>
+            <a href="#" style="float:right;">管理</a>
+        </div>
+    </div>
+</div>
+
+<div id="container">
+
+    <!-- 左栏：博主信息、音乐、日历等 -->
+    <div class="sidebar">
+        <div class="panel">
+            <div id="avatar-box">
+                <div id="avatar">🎨</div>
+                <div id="nickname">林晓·LinXiao</div>
+                <div id="mood">最近在画一幅很大的画，开心！</div>
+                <ul id="blog-stats">
+                    <li>📝 博文总数：<span>47</span> 篇</li>
+                    <li>💬 评论总数：<span>328</span> 条</li>
+                    <li>📸 相册图片：<span>126</span> 张</li>
+                    <li>👫 好友数量：<span>18</span> 位</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="panel">
+            <div class="panel-title">访客统计</div>
+            <div class="counter">
+                欢迎第<br>
+                <span class="counter-digits">008972</span><br>
+                位访客
+            </div>
+        </div>
+
+        <div class="panel">
+            <div class="panel-title">♪ 当前播放</div>
+            <div class="panel-body">
+                <div class="music-player">
+                    <div class="music-info">🎵 《那些年》— 胡夏</div>
+                    <div class="music-bar"><div class="music-bar-fill"></div></div>
+                    <div class="music-controls">
+                        <span><span class="music-btn">⏮</span> <span class="music-btn">▶</span> <span class="music-btn">⏭</span></span>
+                        <span>1:32 / 4:18</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel">
+            <div class="panel-title">📅 2022年12月</div>
+            <div class="panel-body">
+                <table class="calendar">
+                    <thead><tr><th>日</th><th>一</th><th>二</th><th>三</th><th>四</th><th>五</th><th>六</th></tr></thead>
+                    <tbody>
+                        <tr><td></td><td></td><td class="has-post">1</td><td>2</td><td>3</td><td>4</td><td>5</td></tr>
+                        <tr><td>6</td><td>7</td><td>8</td><td>9</td><td class="has-post">10</td><td>11</td><td>12</td></tr>
+                        <tr><td>13</td><td>14</td><td class="today">15</td><td>16</td><td>17</td><td>18</td><td class="has-post">19</td></tr>
+                        <tr><td>20</td><td>21</td><td>22</td><td>23</td><td>24</td><td>25</td><td>26</td></tr>
+                        <tr><td>27</td><td>28</td><td>29</td><td>30</td><td>31</td><td></td><td></td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="panel">
+            <div class="panel-title">🔗 友情链接</div>
+            <div class="panel-body">
+                <ul class="link-list">
+                    <li><a href="#">网易博客首页</a></li>
+                    <li><a href="#">新浪博客</a></li>
+                    <li><a href="#">豆瓣·画画小组</a></li>
+                    <li><a href="#">QQ空间</a></li>
+                    <li><a href="#">他的博客 ❤️</a></li>
+                    <li><a href="#">MSN Spaces 搬家指南</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- 主栏博文 -->
+    <div id="main">
+
+        <!-- 最后一篇（戛然而止） -->
+        <div class="post">
+            <div class="post-header">
+                <a class="post-title" href="#">对不起，我可能没法再更新了</a>
+                <div class="post-meta">
+                    <span>📅 2022-12-19 23:47</span>
+                    <span>👤 晓晓·LinXiao</span>
+                    <span>🏷️ 未分类</span>
+                    <span>💬 评论 (<a href="#">73</a>)</span>
+                </div>
+            </div>
+            <div class="post-body">
+                <div class="doodle red">✖ ✖ ✖ ✖ ✖ ✖ ✖</div>
+                <p>我不知道谁会看到这篇。</p>
+                <p>他今天带回来一个奇怪的瓶子，说是"让我们永远在一起"的药。</p>
+                <p>我怕。他的眼睛，我已经不认识了。他把画室窗户钉死的时候，一句话都没说。</p>
+                <p>他说那幅画——《回声》——再画最后一遍就好。第七遍。他说"第七次，就成了"。</p>
+                <p class="quote">"成了"是什么意思？是画成了，还是……别的什么？</p>
+                <p>画里那个女人，眼睛是空的。我第一次看到那幅画的时候，就怕。现在更怕了。</p>
+                <p class="warning">我藏了一些东西。如果你能找到，就还有机会。</p>
+                <p>如果有人看到这篇博客……</p>
+                <p class="sad">求求你，来 704 号，阻止他。或者……或者，把我从画里放出来？</p>
+                <p>……我知道我在说胡话。</p>
+                <p>但他刚才站在画室门口看我的眼神，真的，真的，不是看一个活人。</p>
+                <div class="doodle red">✖ ✖ ✖ ✖ ✖ ✖ ✖</div>
+                <p class="sad" style="text-align:right;">——晓晓，最后一次更新</p>
+            </div>
+            <div class="post-footer">
+                <span>🔒 该日志已置顶</span>
+                <span>
+                    <a href="#">查看评论(73)</a>
+                    <a href="#">引用</a>
+                    <a href="#">举报</a>
+                </span>
+            </div>
+        </div>
+
+        <!-- 博文2 -->
+        <div class="post">
+            <div class="post-header">
+                <a class="post-title" href="#">画的第七稿了……</a>
+                <div class="post-meta">
+                    <span>📅 2022-12-10 02:15</span>
+                    <span>👤 晓晓·LinXiao</span>
+                    <span>🏷️ <a href="#">画画的日子</a></span>
+                    <span>💬 评论 (<a href="#">18</a>)</span>
+                </div>
+            </div>
+            <div class="post-body">
+                <p>今天我发现那幅画的门，好像比昨天开了一条缝。</p>
+                <p>我跟他说的时候，他很……高兴？那种高兴是不正常的。</p>
+                <p class="quote">他说："快了。晓晓，我们快可以永远在一起了。"</p>
+                <p>永远在一起。这六个字，以前我听到会脸红心跳。现在，我只觉得冷。</p>
+                <p>画室的灯，他开了三天三夜没关过了。说什么"要让画熟悉光"？</p>
+                <p>他看我的眼神，不像在看一个人。像在看一个……东西。</p>
+                <p>我不敢再想下去了。</p>
+                <p class="emoji-dizzy">😷😷😷</p>
+            </div>
+            <div class="post-footer">
+                <span>分类：画画的日子</span>
+                <span>
+                    <a href="#">查看评论(18)</a>
+                    <a href="#">引用</a>
+                    <a href="#">举报</a>
+                </span>
+            </div>
+        </div>
+
+        <!-- 博文3 -->
+        <div class="post">
+            <div class="post-header">
+                <a class="post-title" href="#">他好像……变了一个人</a>
+                <div class="post-meta">
+                    <span>📅 2022-11-02 21:33</span>
+                    <span>👤 晓晓·LinXiao</span>
+                    <span>🏷️ <a href="#">和他的日子</a></span>
+                    <span>💬 评论 (<a href="#">42</a>)</span>
+                </div>
+            </div>
+            <div class="post-body">
+                <div class="doodle">🌧️ 🌧️ 🌧️ 🌧️ 🌧️</div>
+                <p>今天下雨。他又一个人在画室里待了一整天。</p>
+                <p>我端咖啡进去的时候，看到他在写什么"仪式"、"献祭"的字。</p>
+                <p>他看到我，立刻把纸烧了。说我看错了。</p>
+                <p class="quote">"那只是画画的技法笔记，傻瓜。" 他笑了一下。但他的眼睛没笑。</p>
+                <p>晚上我翻垃圾桶，铁桶里全是灰烬。只有最底下一点没烧完的纸，写着几个字。</p>
+                <p class="sad">那些字我不敢写出来。写出来，好像就会变成真的。</p>
+                <p>我不知道是什么意思。但我不敢问。</p>
+                <p class="emoji-dizzy">💔💔💔</p>
+            </div>
+            <div class="post-footer">
+                <span>分类：和他的日子</span>
+                <span>
+                    <a href="#">查看评论(42)</a>
+                    <a href="#">引用</a>
+                    <a href="#">举报</a>
+                </span>
+            </div>
+        </div>
+
+        <!-- 博文4 -->
+        <div class="post">
+            <div class="post-header">
+                <a class="post-title" href="#">他送了我一瓶药，说能"永远记住彼此"</a>
+                <div class="post-meta">
+                    <span>📅 2022-10-15 20:05</span>
+                    <span>👤 晓晓·LinXiao</span>
+                    <span>🏷️ <a href="#">和他的日子</a></span>
+                    <span>💬 评论 (<a href="#">61</a>)</span>
+                </div>
+            </div>
+            <div class="post-body">
+                <div class="doodle">💊 💊 💊 💊 💊 💊</div>
+                <p>今天是我们认识两年半的日子。</p>
+                <p>他送了我两瓶白色的药。一瓶蓝色瓶盖，一瓶红色瓶盖。</p>
+                <p>他说："蓝色的，吃了能'忘记一切不开心的'；红色的，吃了能'记起一切美好的'。"</p>
+                <p>他说两瓶要成对，"一个人吃蓝，一个人吃红，就能永远在一起。"</p>
+                <p class="happy">我当时很感动啊！还哭了。他好久没这么浪漫了。</p>
+                <p>可是刚才我想拿出来拍照的时候，总觉得药瓶上那个符号在哪里见过。</p>
+                <p>想不起来了。但心里发慌。</p>
+                <p>我没吃。先藏起来了。</p>
+                <p class="emoji-dizzy">……我有点怕。😟</p>
+            </div>
+            <div class="post-footer">
+                <span>分类：和他的日子</span>
+                <span>
+                    <a href="#">查看评论(61)</a>
+                    <a href="#">引用</a>
+                    <a href="#">举报</a>
+                </span>
+            </div>
+        </div>
+
+        <!-- 博文5 -->
+        <div class="post">
+            <div class="post-header">
+                <a class="post-title" href="#">（更新照片）《回声》的第二稿，他画得好棒！</a>
+                <div class="post-meta">
+                    <span>📅 2021-08-20 16:52</span>
+                    <span>👤 晓晓·LinXiao</span>
+                    <span>🏷️ <a href="#">画画的日子</a></span>
+                    <span>💬 评论 (<a href="#">107</a>)</span>
+                </div>
+            </div>
+            <div class="post-body">
+                <div class="doodle">🎨 🖼️ 🎨 🖼️ 🎨 🖼️ 🎨</div>
+                <p>看到他最近的新画了——《回声》的第二稿！！</p>
+                <p>他说模特是"我"。可是画中的女人脸是模糊的，眼睛是空的。我问他为什么，他说：</p>
+                <p class="quote">"因为真正的你，还没有'进去'。"</p>
+                <p>我听不懂，但觉得好酷！不愧是他！</p>
+                <p>他说要画七稿，"越画越接近真实"。现在才第二稿，已经把我美得不行了！</p>
+                <p class="emoji-heart">❤️❤️❤️ 他画我侧脸的时候，我就坐在他对面看着他画。那一刻我觉得，这辈子就值了。</p>
+                <p>评论区好多姐妹们问我：为什么是"回声"做标题？</p>
+                <p>他说，他小时候在一个回音很大的公寓走廊里长大，那是他童年最温暖的记忆。所以他把这次的大画叫《回声》。</p>
+                <p>温暖啊。我感动得眼泪都快掉了。</p>
+                <p class="emoji-flower">🌸🌸🌸🌸🌸</p>
+            </div>
+            <div class="post-footer">
+                <span>分类：画画的日子</span>
+                <span>
+                    <a href="#">查看评论(107)</a>
+                    <a href="#">引用</a>
+                    <a href="#">举报</a>
+                </span>
+            </div>
+        </div>
+
+        <!-- 博文6 -->
+        <div class="post">
+            <div class="post-header">
+                <a class="post-title" href="#">搬新家啦！回声公寓704号 ❤️</a>
+                <div class="post-meta">
+                    <span>📅 2021-06-03 11:08</span>
+                    <span>👤 晓晓·LinXiao</span>
+                    <span>🏷️ <a href="#">和他的日子</a></span>
+                    <span>💬 评论 (<a href="#">89</a>)</span>
+                </div>
+            </div>
+            <div class="post-body">
+                <div class="doodle">🏠 🏠 🏠 🏠 🏠 🏠 🏠</div>
+                <p>终于和他搬到一起住了！！！🎉</p>
+                <p>回声公寓704号。房子旧旧的，但客厅朝南，阳光好。客厅大得够他摆画架，我开心！</p>
+                <p class="quote">公寓楼下管理处的大爷好酷，一句话都不说，就"七楼，704，又来一个"，然后就给钥匙了。哈哈！</p>
+                <p>卧室柜子特别大。卫生间镜子也好看。</p>
+                <p>画室最里面的房间他要了，窗户朝北，光线柔和。他说画画需要"稳定的北光"。</p>
+                <p>我不懂这些，我只需要他在我身边就够了。</p>
+                <p>对了，他今天从二手市场淘了一个铁桶回来放画室，专门烧画稿。他说"一个真正的画家，至少要烧掉一半的画"，好浪漫！</p>
+                <p class="emoji-heart">❤️ 我真的，真的，好幸福啊。</p>
+                <p>希望你们也能找到那个一起生活的人！</p>
+                <p class="emoji-flower">🌷🌷🌷🌷🌷🌷</p>
+            </div>
+            <div class="post-footer">
+                <span>分类：和他的日子</span>
+                <span>
+                    <a href="#">查看评论(89)</a>
+                    <a href="#">引用</a>
+                    <a href="#">举报</a>
+                </span>
+            </div>
+        </div>
+
+        <!-- 博文7 -->
+        <div class="post">
+            <div class="post-header">
+                <a class="post-title" href="#">【转】画画模特的姿势心得（其实我啥也不懂，但是他说我摆的姿势好~）</a>
+                <div class="post-meta">
+                    <span>📅 2020-10-14 19:12</span>
+                    <span>👤 晓晓·LinXiao</span>
+                    <span>🏷️ <a href="#">转载好文</a></span>
+                    <span>💬 评论 (<a href="#">26</a>)</span>
+                </div>
+            </div>
+            <div class="post-body">
+                <p>最近常给他当模特。</p>
+                <p>我其实不会画画，只会摆姿势。但是他一直夸我"感觉好"。</p>
+                <p>他说他之前画过很多人，但是都"没有灵魂"。说我的眼睛——</p>
+                <p class="quote">"看你的时候，我就想把那一瞬间留住。永远留住。"</p>
+                <p>……然后他就说要找一种"仪式"，"让画中的人能真的出来"。</p>
+                <p>我以为是浪漫的情话，就信了。嘻嘻。</p>
+                <p class="emoji-heart">爱他，就是愿意做他一辈子的模特吧。</p>
+            </div>
+            <div class="post-footer">
+                <span>分类：转载好文</span>
+                <span>
+                    <a href="#">查看评论(26)</a>
+                    <a href="#">引用</a>
+                    <a href="#">举报</a>
+                </span>
+            </div>
+        </div>
+
+        <!-- 开博第一篇 -->
+        <div class="post">
+            <div class="post-header">
+                <a class="post-title" href="#">开博啦！！记录画画的日子~🌸</a>
+                <div class="post-meta">
+                    <span>📅 2020-03-20 10:22</span>
+                    <span>👤 晓晓·LinXiao</span>
+                    <span>🏷️ <a href="#">日志碎碎念</a></span>
+                    <span>💬 评论 (<a href="#">34</a>)</span>
+                </div>
+            </div>
+            <div class="post-body">
+                <div class="doodle">🎉 🎊 🌸 🎊 🎉 🌸 🎊 🎉</div>
+                <p>嘿！朋友们好呀~</p>
+                <p>我是林晓，朋友们都叫我晓晓。25岁啦。</p>
+                <p>今天是我在网易博客的第一天！看到周围朋友都有博客了，我也想有一个，记录自己学画画的日子，还有……嘿嘿，还有刚刚认识的他。</p>
+                <p class="quote">对，就是3月15号那天，在公园的樱花树下。</p>
+                <p>那天我去樱花园拍照，看到有个男生在画画，画了一整个下午，画得好认真。我站在旁边看了好久好久，他都没抬头。最后他收画笔的时候看到我，笑了一下——我的心就跳漏了一拍！！</p>
+                <p>他说他叫……嗯，博客里就不公开真名啦，就叫"他"吧。</p>
+                <p class="happy">他是画家哦！真正的画家！科班毕业的那种！他还说要教我画画！</p>
+                <p>我虽然不会画画，但我可以做他的模特啊。嘻嘻。</p>
+                <p>以后我就在这里更新啦，欢迎大家来踩！！</p>
+                <p class="emoji-flower">🌸🌸🌸 我们都会幸福的！！ 🌸🌸🌸</p>
+            </div>
+            <div class="post-footer">
+                <span>分类：日志碎碎念</span>
+                <span>
+                    <a href="#">查看评论(34)</a>
+                    <a href="#">引用</a>
+                    <a href="#">举报</a>
+                </span>
+            </div>
+        </div>
+
+        <div class="pagination">
+            <a href="#">&laquo; 上一页</a>
+            <b>1</b>
+            <a href="#">2</a>
+            <a href="#">3</a>
+            <a href="#">4</a>
+            <a href="#">下一页 &raquo;</a>
+        </div>
+
+    </div>
+
+    <!-- 右栏：搜索、评论、分类、留言 -->
+    <div class="sidebar">
+        <div class="panel">
+            <div class="panel-title">🔎 站内搜索</div>
+            <div class="panel-body">
+                <div class="search-box">
+                    <input type="text" placeholder="输入关键字...">
+                    <button>搜一下</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel">
+            <div class="panel-title">📝 文章分类</div>
+            <div class="panel-body">
+                <ul class="category-list">
+                    <li><a href="#">和他的日子 <span>(19)</span></a></li>
+                    <li><a href="#">画画的日子 <span>(17)</span></a></li>
+                    <li><a href="#">日志碎碎念 <span>(08)</span></a></li>
+                    <li><a href="#">转载好文 <span>(03)</span></a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="panel">
+            <div class="panel-title">💬 最新评论</div>
+            <div class="panel-body">
+                <ul class="comment-list">
+                    <li>
+                        <span class="comment-name">画画的鱼：</span>
+                        <span class="comment-text">博主怎么不更新了？担心你</span>
+                        <span class="comment-date">2023-03-18 00:21</span>
+                    </li>
+                    <li>
+                        <span class="comment-name">粉色云朵：</span>
+                        <span class="comment-text">晓晓？你还好吗？一年没消息了</span>
+                        <span class="comment-date">2023-12-25 22:05</span>
+                    </li>
+                    <li>
+                        <span class="comment-name">画画的他：</span>
+                        <span class="comment-text">她只是休息一下。以后我替她更。</span>
+                        <span class="comment-date">2023-12-26 03:47</span>
+                    </li>
+                    <li>
+                        <span class="comment-name">匿名网友：</span>
+                        <span class="comment-text">请问704号是真的存在吗？</span>
+                        <span class="comment-date">2024-05-02 19:11</span>
+                    </li>
+                    <li>
+                        <span class="comment-name">旧友：</span>
+                        <span class="comment-text">晓晓，我是小雅，我搬家到704附近了，联系我好吗？</span>
+                        <span class="comment-date">2025-07-15 14:38</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="panel">
+            <div class="panel-title">📌 博主推荐</div>
+            <div class="panel-body">
+                <div class="sparkle">✨ 🌟 💫 ✨ 🌟</div>
+                <p style="font-size:11px; color:#666; text-align:center; padding:5px 0;">
+                    "画笔落处，<br>皆是我心。"
+                </p>
+                <div class="sparkle">🌟 💫 ✨ 🌟 💫</div>
+            </div>
+        </div>
+
+        <div class="panel">
+            <div class="panel-title">✍️ 给我留言</div>
+            <div class="panel-body">
+                <div class="guestbook">
+                    <textarea placeholder="说点什么吧，晓晓会回复的~"></textarea>
+                    <button>提交留言</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="footer">
+    © 2020-2022 晓晓的画语 · 林晓个人博客 · 网易博客 模板 ·
+    <a href="#">关于博客</a> | <a href="#">隐私声明</a> | <a href="#">举报</a>
+    <br>
+    服务由 <span style="color:#fff6a8;">网易博客（已停止服务·本地存档备份）</span> 提供 · 最后同步时间：2022-12-19 23:50
+</div>
+
+<a href="index.html" class="back-btn">← 返回游戏</a>
+
+<!-- 功能不可用提示弹窗 -->
+<div class="modal-overlay" id="modalOverlay"></div>
+<div class="modal-box" id="modalBox" style="display:none;">
+    <div class="modal-title" id="modalTitle">提示</div>
+    <div class="modal-content">
+        <div class="main-msg" id="modalMainMsg">该功能不可用</div>
+        <div class="sub-msg" id="modalSubMsg">网易博客已停止服务，本页为本地存档备份。</div>
+    </div>
+    <div class="modal-btns">
+        <button id="modalOkBtn">确定</button>
+    </div>
+</div>
+<script>
+    (function(){
+        var overlay = document.getElementById('modalOverlay');
+        var box = document.getElementById('modalBox');
+        var okBtn = document.getElementById('modalOkBtn');
+        var titleEl = document.getElementById('modalTitle');
+        var mainEl = document.getElementById('modalMainMsg');
+        var subEl = document.getElementById('modalSubMsg');
+
+        function showModal(e, opts){
+            if(e && e.preventDefault) e.preventDefault();
+            opts = opts || {};
+            titleEl.textContent = opts.title || '提示';
+            mainEl.textContent = opts.main || '该功能不可用';
+            subEl.textContent = opts.sub || '';
+            if(opts.err){ box.classList.add('err'); } else { box.classList.remove('err'); }
+            overlay.classList.add('show');
+            box.style.display = 'block';
+        }
+        function closeModal(){ overlay.classList.remove('show'); box.style.display = 'none'; }
+        overlay.addEventListener('click', closeModal);
+        okBtn.addEventListener('click', closeModal);
+        document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeModal(); });
+
+        // 1. "查看评论""引用""举报" → 该功能不可用
+        var links = document.getElementsByTagName('a');
+        for (var i = 0; i < links.length; i++) {
+            (function(a){
+                var txt = a.textContent || '';
+                if (/查看评论|引用|举报/.test(txt)) {
+                    a.addEventListener('click', function(e){
+                        showModal(e, { title:'⚠️ 提示', main:'该功能不可用', sub:'网易博客已停止服务，本页为本地存档备份。' });
+                    });
+                }
+            })(links[i]);
+        }
+
+        // 2. 友情链接、文章分类 → 网络错误
+        var extLinks = document.querySelectorAll('.link-list a, .category-list a');
+        for (var j = 0; j < extLinks.length; j++) {
+            (function(a){
+                a.addEventListener('click', function(e){
+                    showModal(e, { title:'📡 连接失败', main:'无法连接到网络', sub:'ERR_INTERNET_DISCONNECTED · 请检查您的网络连接后重试。', err:true });
+                });
+            })(extLinks[j]);
+        }
+
+        window.__closeModal = closeModal;
+    })();
+</script>
+
+<script>
+// 博客访问密码门 - 最简版输入框
+(function(){
+    var gate = document.getElementById('loginGate');
+    var form = document.getElementById('blogLoginForm');
+    var input = document.getElementById('blogPwd');
+    var err = document.getElementById('blogLoginErr');
+
+    // 已通过验证则直接放行
+    var ok = false;
+    try { ok = sessionStorage.getItem('blog_ok') === '1'; } catch(e){}
+    if(ok){ gate.style.display='none'; return; }
+
+    // 多重聚焦保障（避免某些浏览器首屏不聚焦的问题）
+    function focusInput(){
+        if(input){ try { input.focus(); } catch(e){} }
+    }
+    focusInput();
+    setTimeout(focusInput, 100);
+    setTimeout(focusInput, 500);
+
+    // 点击遮罩也能聚焦到输入框
+    if(gate){
+        gate.addEventListener('click', function(e){
+            if(e.target === gate){ focusInput(); }
+        });
+    }
+
+    // 表单提交校验
+    if(form){
+        form.addEventListener('submit', function(e){
+            e.preventDefault();
+            var raw = (input.value || '').toString();
+            var v = raw.replace(/[\s.\-\/]/g,'');
+            if(v === '20200315' || v === '0315'){
+                try { sessionStorage.setItem('blog_ok','1'); } catch(e){}
+                gate.style.display = 'none';
+            } else {
+                err.textContent = '密码错误，请重试。';
+                input.value = '';
+                focusInput();
+            }
+        });
+    }
+})();
+</script>
+
+</body>
+</html>
