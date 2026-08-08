@@ -33,8 +33,8 @@ const Items = {
     safe_code_hint: { id: 'safe_code_hint', name: '便签', icon: '📝', desc: '便签上写着："保险箱密码=初见日期后两位+照片里女人的年龄。她今年该27岁了。"' },
     mirror_shard: { id: 'mirror_shard', name: '镜子碎片', icon: '🪞', desc: '尖锐的镜子碎片，映出的你似乎有些不太一样……' },
     drug: { id: 'drug', name: '白色药片', icon: '💊', desc: '不知名的白色药片，边缘刻着奇怪的符号。' },
-    burnt_note: { id: 'burnt_note', name: '烧焦的纸条', icon: '🔥', desc: '从画室灰烬里捡出来的半张纸条，还剩半截没烧透。用蓝色圆珠笔写的字："网易博客 · 晓晓的画语 · 网址：localhost:8080/echo_linxiao_blog.html · 密码和初见那天一样"。' },
-    blog_slip: { id: 'blog_slip', name: '日记本里的便签', icon: '📑', desc: '夹在日记里的小纸条，是林晓的字："如果我消失了，去看我的博客。第七次之前，还有机会。网址：<a href="echo_linxiao_blog.html" target="_blank" rel="noopener" class="item-link">localhost:8080/echo_linxiao_blog.html</a>"' }
+    burnt_note: { id: 'burnt_note', name: '烧焦的纸条', icon: '🔥', desc: '从画室灰烬里捡出来的半张纸条，还剩半截没烧透。用蓝色圆珠笔写的字："网易博客 · 晓晓的画语 · 网址：/echo_linxiao_blog.html · 密码和初见那天一样"。' },
+    blog_slip: { id: 'blog_slip', name: '日记本里的便签', icon: '📑', desc: '夹在日记里的小纸条，是林晓的字："如果我消失了，去看我的博客。第七次之前，还有机会。网址：<a href="echo_linxiao_blog.html" target="_blank" rel="noopener" class="item-link">/echo_linxiao_blog.html</a>"' }
 };
 
 // ===== 线索定义 =====
@@ -427,7 +427,7 @@ const Scenes = {
             '你翻了翻日记，大部分内容都被撕掉了，只留下两页残片。',
             '在日记残页之间，夹着一张手写的便签——是林晓的字：',
             '<whisper>"如果我消失了，去看我的博客。第七次之前，还有机会。"</whisper>',
-            '<whisper>"网址：localhost:8080/echo_linxiao_blog.html"</whisper>',
+            '<whisper>"网址：/echo_linxiao_blog.html"</whisper>',
             '便签的背面，她还画了一个箭头，写着：',
             '"对了，他才是那个画家哦。我只是——他摆姿势的模特而已。呵呵。"',
             '<thought>"他"才是画家？……那我为什么一直以为，失踪的画家是林晓？</thought>',
@@ -612,7 +612,7 @@ const Scenes = {
             '其中一片硬挺的铜版纸，像是打印的博客标题页，边缘已经焦黑：',
             '"……网易博客 · 晓晓的画语 · 博主：林晓·LinXiao · 博文47篇……"',
             '下面夹着一张手写小纸条，用蓝色圆珠笔写的，还剩半截：',
-            '"……网址：localhost:8080/echo_linxiao_blog.html · 密码和初见那天一样……"',
+            '"……网址：/echo_linxiao_blog.html · 密码和初见那天一样……"',
             '另一片没烧完的画稿上，写着几行潦草的字，像是"他"的笔迹：',
             '"……仪式……血……第七次献祭……画中人出来……互换存在……"',
             '画稿的角落里，还有一个符号——和药瓶边缘刻着的一模一样。',
