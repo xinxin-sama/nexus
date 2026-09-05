@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover"
+    />
+    <meta name="theme-color" content="#0a0e1a" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-orientation" content="landscape" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="apple-mobile-web-app-title" content="雾港低语" />
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <title>雾港低语</title>
+    <script>
+      (function () {
+        var needsPolyfill = (function () {
+          try {
+            if (typeof crypto === "undefined" || typeof crypto.randomUUID != "function") return true;
+            if (typeof Object.hasOwn != "function") return true;
+            if (typeof [].at != "function") return true;
+            if (typeof [].findLast != "function") return true;
+            return false;
+          } catch (e) {
+            return true;
+          }
+        })();
+        if (needsPolyfill) {
+          document.write('<script src="./assets/polyfills.js"><\/script>');
+        }
+      })();
+    </script>
+    <link rel="modulepreload" crossorigin href="./assets/rolldown-runtime-CNC7AqOf.js" />
+    <link rel="modulepreload" crossorigin href="./assets/radix-CfDSOVqQ.js" />
+    <link rel="modulepreload" crossorigin href="./assets/toolkit-D3oCj6-b.js" />
+    <link rel="stylesheet" crossorigin href="./assets/index-CCZh_6eg.css" />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" crossorigin src="./assets/index-DTdbHNCS.js"></script>
+  </body>
+</html>
